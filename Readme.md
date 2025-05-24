@@ -35,13 +35,16 @@ Exchange public keys (`sender_pub.pem`, `receiver_pub.pem`) out-of-band or hardc
 1. Receive three base64-encoded lines over netcat and pipe them into your custom script:
    > nc -l -p 9999 | python3 secure_receive_custom.py receiver_priv.txt sender_pub.txt
 2. Read each line from standard input:
+
    `Line 1: encrypted_AES_key_and_IV`
+
    `Line 2: encrypted_message`
+   
    `Line 3: digital_signature`
-3. Base64-decode each part.
-4. Decrypt the AES key and IV using the receiver's RSA private key (custom).
-5. Decrypt the message using AES-256 in CBC mode with the decrypted key and IV.
-6. Verify the digital signature using the sender’s public RSA key and your custom SHA-256.
+4. Base64-decode each part.
+5. Decrypt the AES key and IV using the receiver's RSA private key (custom).
+6. Decrypt the message using AES-256 in CBC mode with the decrypted key and IV.
+7. Verify the digital signature using the sender’s public RSA key and your custom SHA-256.
 
 ### Message Format (Sent over netcat)
 
