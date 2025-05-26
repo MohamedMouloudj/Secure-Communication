@@ -55,3 +55,8 @@ The message consists of three base64-encoded lines, sent in the following order:
 - `digital_signature`
 
 Each line should be processed in sequence by the receiver.
+
+## Entry files
+`secure_receive_custom.py`: to decrept an verify the received messages and either accept them or reject them.
+
+`secure_send_custom.py`: to encrypt the messages before sending them over the socket.
