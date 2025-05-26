@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 RSA Key Generation Script
 Compatible with the secure message exchange protocol

@@ -60,4 +60,4 @@ def sha256(message: bytes) -> str:
             (h[6] + g) & 0xFFFFFFFF, (h[7] + h0) & 0xFFFFFFFF,
         ]
 
-    return ''.join(f'{value:08x}' for value in h)
+    return b''.join(value.to_bytes(4, byteorder='big') for value in h)

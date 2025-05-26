@@ -1,18 +1,6 @@
 from rsa_cipher import encrypt_rsa, decrypt_rsa, load_key_from_file
 from rsa_keygen import load_key_from_file
-
-# You'll need to import your teammate's SHA-256 implementation
-# For now, I'll create a placeholder that you can replace
-def sha256_custom(message):
-    """
-    Placeholder for custom SHA-256 implementation
-    Replace this with your teammate's sha256_custom.py module
-    """
-    # This is a placeholder - replace with: from sha256_custom import sha256
-    import hashlib
-    if isinstance(message, str):
-        message = message.encode('utf-8')
-    return hashlib.sha256(message).digest()
+from sha256_custom import sha256 as sha256_custom
 
 def sign_message(message, private_key):
     """

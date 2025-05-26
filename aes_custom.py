@@ -71,3 +71,15 @@ def decrypt_aes(ciphertext: bytes, key: bytes, iv: bytes) -> bytes:
         plaintext += decrypted
         previous = block
     return unpad(plaintext)
+
+def aes_key_generation():
+    """
+    Generate a fresh 256-bit AES key and a 16-byte IV for a new communication session.
+    Returns:
+        tuple: (key, iv)
+    """
+    # Generate new key and IV for this communication session
+    key = os.urandom(32)  # 256-bit key for AES-256
+    iv = os.urandom(16)   # 16-byte IV
+    
+    return key, iv
