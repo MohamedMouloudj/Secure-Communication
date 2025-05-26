@@ -1,4 +1,4 @@
-## Secure Message Exchange Protocol
+# Secure Message Exchange Protocol
 
 This protocol simulates a basic SSL/TLS-style secure communication using netcat for transport and Python for encryption.
 
