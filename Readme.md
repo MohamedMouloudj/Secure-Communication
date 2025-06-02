@@ -4,6 +4,10 @@ This protocol simulates a basic SSL/TLS-style secure communication using netcat 
 
 ---
 
+## Sequence Diagram
+
+![Sequence Diagram](secure-communication-diagram.png)
+
 ### Key Setup
 
 Each party generates an RSA key pair
@@ -39,12 +43,13 @@ Exchange public keys (`sender_pub.pem`, `receiver_pub.pem`) out-of-band or hardc
    `Line 1: encrypted_AES_key_and_IV`
 
    `Line 2: encrypted_message`
-   
+
    `Line 3: digital_signature`
-4. Base64-decode each part.
-5. Decrypt the AES key and IV using the receiver's RSA private key (custom).
-6. Decrypt the message using AES-256 in CBC mode with the decrypted key and IV.
-7. Verify the digital signature using the sender’s public RSA key and your custom SHA-256.
+
+3. Base64-decode each part.
+4. Decrypt the AES key and IV using the receiver's RSA private key (custom).
+5. Decrypt the message using AES-256 in CBC mode with the decrypted key and IV.
+6. Verify the digital signature using the sender’s public RSA key and your custom SHA-256.
 
 ### Message Format (Sent over netcat)
 
@@ -57,6 +62,7 @@ The message consists of three base64-encoded lines, sent in the following order:
 Each line should be processed in sequence by the receiver.
 
 ## Entry files
+
 `secure_receive_custom.py`: to decrept an verify the received messages and either accept them or reject them.
 
 `secure_send_custom.py`: to encrypt the messages before sending them over the socket.
